@@ -285,3 +285,39 @@ weather_df %>%
     ## Warning: Removed 3 rows containing non-finite values (stat_density_ridges).
 
 ![](viz_par_01_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+
+## Saving and embedding plots
+
+first – let’s save a plot
+
+``` r
+weather_scatterplot =
+  weather_df %>% 
+  ggplot(aes(x = date, y = tmax, color = name, size = prcp)) +
+  geom_point(aes(size = prcp), alpha = .3) +
+  geom_smooth(se = FALSE) +
+  facet_grid(. ~name)
+
+  ggsave(
+    file = "results/weather_scatterplot.pdf", 
+    plot = weather_scatterplot,
+         width = 8, height = 5)
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 3 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 3 rows containing missing values (geom_point).
+
+``` r
+weather_scatterplot
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 3 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 3 rows containing missing values (geom_point).
+
+![](viz_par_01_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
